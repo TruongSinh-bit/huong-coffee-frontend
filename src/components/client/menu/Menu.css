@@ -1,0 +1,157 @@
+.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.pagination-button {
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50% !important;
+    border: 1px solid #674c27 !important;
+    font-size: 16px;
+    margin: 0 2px;
+}
+.menu-entry {
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px; /* Giữ bo tròn góc nếu cần, có thể loại bỏ nếu không muốn */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Có thể giữ hoặc loại bỏ nếu không cần */
+}
+
+.menu-entry .img {
+    background-size: cover;
+    background-position: center;
+    height: 200px; /* Điều chỉnh chiều cao ảnh nếu cần */
+    width: 100%;
+}
+
+.menu-entry .text {
+    padding: 15px;
+    text-align: center;
+}
+
+.menu-entry .text h3 {
+    font-size: 1.2rem;
+    white-space: nowrap; /* Ngăn cản việc xuống dòng */
+    overflow: hidden; /* Ẩn phần văn bản không thể hiện */
+    text-overflow: ellipsis; /* Hiển thị dấu ba chấm khi văn bản dài */
+}
+
+.menu-entry .text .price {
+    font-size: 1rem;
+    color: #333;
+}
+
+.menu-entry .text .btn {
+    margin-top: 10px;
+}
+
+.description {
+    /* Chỉ hiển thị 1 dòng mô tả */
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 1.6em; /* Điều chỉnh tùy thuộc vào kích thước dòng */
+    position: relative;
+}
+
+/* Hiện toàn bộ mô tả khi hover chuột */
+.description:hover {
+    -webkit-line-clamp: unset;
+    max-height: unset;
+}
+
+.menu-entry .desc {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+
+.menu-entry:hover .desc {
+    display: block;
+}
+
+.menu-entry .img {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 200px; /* Adjust as needed */
+}
+
+.custom-icon {
+    font-size: 1.4rem; /* Điều chỉnh kích thước của biểu tượng */
+    line-height: 1; /* Căn chỉnh chiều cao dòng cho biểu tượng */
+    vertical-align: top; /* Căn giữa biểu tượng với văn bản */
+}
+
+.custom-h4 {
+    line-height: 1.5; /* Căn chỉnh chiều cao dòng cho h4 */
+    margin-bottom: 0; /* Loại bỏ khoảng cách dưới h4 nếu cần */
+}
+
+.table>:not(caption)>*>* {
+    background-color: unset !important;
+    color: unset !important;
+}
+
+.text-center td {
+    color: white;
+}
+
+.input-number {
+    background: transparent !important; /* Nền trong suốt */
+    border: 1px solid rgba(204, 204, 204, 0.5); /* Đường viền xung quanh với độ trong suốt */
+    border-radius: 3px; /* Bo tròn góc (tùy chọn) */
+    padding: 3px; /* Khoảng cách giữa nội dung và đường viền */
+    box-shadow: none; /* Loại bỏ bóng (nếu có) */
+    -webkit-appearance: none; /* Loại bỏ kiểu mặc định của trình duyệt */
+    -moz-appearance: none; /* Loại bỏ kiểu mặc định của trình duyệt Firefox */
+    appearance: none; /* Loại bỏ kiểu mặc định của trình duyệt */
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+.notification-content {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Giới hạn hiển thị 3 dòng */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em; /* Điều chỉnh chiều cao tùy thuộc vào font-size */
+    line-height: 1.5em; /* Điều chỉnh dòng cách dòng */
+}
+.dropdown-item:hover strong {
+    color: #ffc107; /* Màu vàng cho tiêu đề */
+}

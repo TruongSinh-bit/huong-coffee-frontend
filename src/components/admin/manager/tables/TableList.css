@@ -1,0 +1,29 @@
+/* TableList.css */
+
+.btn-success {
+    background-color: #28a745; /* Màu nền của nút thành công */
+    border-color: #28a745; /* Màu viền của nút thành công */
+    color: #fff; /* Màu chữ của nút thành công */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Màu nền khi di chuột qua nút thành công */
+    border-color: #1e7e34; /* Màu viền khi di chuột qua nút thành công */
+}
+
+.btn-success i {
+    margin-right: 5px; /* Khoảng cách giữa biểu tượng và chữ */
+}
+.table-header {
+    color: #007bff; /* Màu chữ tiêu đề */
+    font-weight: bold; /* Đậm chữ */
+    background-color: #f8f9fa; /* Màu nền tiêu đề */
+}
+
+.sortable {
+    cursor: pointer; /* Con trỏ khi di chuột qua tiêu đề có thể sắp xếp */
+}
+
+.sortable:hover {
+    color: #0056b3; /* Màu chữ khi di chuột qua tiêu đề có thể sắp xếp */
+}

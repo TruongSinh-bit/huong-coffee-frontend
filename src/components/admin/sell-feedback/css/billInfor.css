@@ -1,0 +1,17 @@
+@media print {
+    @page {
+        size: A5;
+        margin: 1cm; /* Điều chỉnh lề in */
+    }
+}
+
+.receipt {
+    width: 100%; /* Đặt chiều rộng theo kích thước khổ A5 */
+    max-width: 14.8cm; /* Đặt chiều rộng tối đa theo chiều ngang của khổ A5 */
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+

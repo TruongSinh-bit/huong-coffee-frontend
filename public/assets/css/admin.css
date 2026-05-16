@@ -1,0 +1,62 @@
+/*.table-card {*/
+/*    border: 1px solid #ddd;*/
+/*    padding: 50px;*/
+/*    text-align: center;*/
+/*    cursor: pointer;*/
+/*    background-color: #68cdff;*/
+/*}*/
+
+/*.table-card-grey{*/
+/*    border: 1px solid #ddd;*/
+/*    padding: 50px;*/
+/*    text-align: center;*/
+/*    cursor: pointer;*/
+/*    background-color: grey;*/
+/*    pointer-events: none;*/
+/*}*/
+
+/*.pagination-container {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    margin-top: 20px;*/
+/*}*/
+
+/*.menu-table {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.menu-table th, .menu-table td {*/
+/*    text-align: center;*/
+/*    vertical-align: middle;*/
+/*}*/
+
+/*.selected-table .table-card {*/
+/*    !* Các kiểu CSS cho bàn đang được chọn *!*/
+/*    border: 2px solid #007bff; !* Màu sắc của border khi chọn *!*/
+/*    background-color: #f0f8ff; !* Màu nền khi chọn (tùy chọn) *!*/
+/*}*/
+
+
+
+/*.button-def {*/
+/*    justify-content: space-between; !* Cách đều các nút *!*/
+/*    gap: 10px; !* Khoảng cách giữa các nút *!*/
+/*    padding: 2px 4px;*/
+/*    border-radius: 10px; !* Bo tròn các góc *!*/
+/*    border: 1px solid black;*/
+/*    background-color: white;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+/*.btn-red{*/
+/*    background-color: red;*/
+/*}*/
+/*.btn-yellow{*/
+/*    background-color: yellow;*/
+/*}*/
+/*.btn-green{*/
+/*    background-color: green;*/
+/*}*/
+
+
+

@@ -1,0 +1,21 @@
+/* Sidebar CSS */
+.sidebar-menu li a {
+    color: #000; /* Default text color */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for color, transform, and box-shadow */
+    display: flex;
+    align-items: center; /* Align icon and text vertically */
+    padding: 0.75rem 1.25rem; /* Adjust padding for spacing */
+    border-radius: 5px; /* Rounded corners for smoother effects */
+}
+
+.sidebar-menu li a:hover,
+.sidebar-menu li a.active {
+    color: #0d6efd !important; /* Blue color on hover or active state */
+    text-decoration: none !important; /* Remove underline on hover or active state */
+    transform: scale(1.05); /* Slight zoom-in effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow on hover */
+}
+
+.sidebar-menu li a i {
+    margin-right: 0.5rem; /* Space between icon and text */
+}

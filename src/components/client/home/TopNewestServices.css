@@ -1,0 +1,12 @@
+
+.fade-in {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+}
+
+.fade-out {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}

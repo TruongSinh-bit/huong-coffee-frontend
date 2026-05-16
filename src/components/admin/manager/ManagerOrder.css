@@ -1,0 +1,38 @@
+.eye-icon {
+    font-size: 18px; /* Kích thước icon */
+    color: #0059ff;  /* Màu xanh da trời */
+    cursor: pointer; /* Con trỏ chuột sẽ hiển thị dưới dạng pointer */
+}
+
+.eye-icon:hover {
+    color: #0059ff;  /* Màu xanh da trời đậm hơn khi hover */
+}
+
+.btn-close {
+    background-color: #007bff; /* Màu xanh da trời */
+    border: none;
+    color: white;
+}
+
+.btn-close:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+}
+
+/* Optional: Add margin to space out cards more if needed */
+.d-flex > .revenue-card {
+    margin: 10px;
+}
+.revenue-card {
+    background-color: #f8f9fa; /* Màu nền nhẹ cho thẻ */
+    border-radius: 8px; /* Bo tròn các góc của thẻ */
+    padding: 15px; /* Thêm khoảng cách bên trong thẻ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm bóng nhẹ cho thẻ */
+    width: 100%; /* Đảm bảo thẻ chiếm toàn bộ chiều rộng của phần tử chứa nó */
+    max-width: 350px; /* Giới hạn chiều rộng tối đa của thẻ */
+}
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+/* Hiệu ứng khi hover vào mục navbar */
+.navbar-nav .nav-item .nav-link {
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #ffb347; /* Màu khi hover */
+    transform: scale(1.1); /* Phóng to khi hover */
+}
+
+/* Hiệu ứng khi click vào mục navbar */
+.navbar-nav .nav-item .nav-link:active {
+    color: #ff6347; /* Màu khi click */
+    transform: scale(0.95); /* Thu nhỏ nhẹ khi click */
+}
