@@ -1,10 +1,10 @@
 export const hasRole = (requiredRole) => {
     const rolesString = localStorage.getItem('roles');
-    console.log(rolesString);
     if (!rolesString) return null; // Không có dữ liệu trong localStorage
 
     try {
         const roles = JSON.parse(rolesString);
+        if (roles.includes('ROLE_ADMIN')) return true;
         return roles.includes(requiredRole);
     } catch (e) {
         console.error('Lỗi parse JSON từ localStorage:', e);
@@ -13,5 +13,5 @@ export const hasRole = (requiredRole) => {
 };
 
 export const isLoggedIn = () => {
-    return localStorage.getItem('employeeId') !== null; // Giả sử bạn kiểm tra đăng nhập dựa trên 'employeeId'
+    return localStorage.getItem('employeeId') !== null;
 };
