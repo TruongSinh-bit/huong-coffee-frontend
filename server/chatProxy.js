@@ -83,7 +83,7 @@ async function callGemini(prompt) {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${GEMINI_API_KEY}`;
     const body = {
         contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: { temperature: 0.2, maxOutputTokens: 120 }
+        generationConfig: { temperature: 0.7, maxOutputTokens: 800 }
     };
     const aiResp = await axios.post(url, body);
     return extractGeminiReply(aiResp.data);
