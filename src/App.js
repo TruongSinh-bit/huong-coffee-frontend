@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate, useLocation} from "react-router-dom";
 import {Helmet} from 'react-helmet';
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
@@ -62,6 +62,7 @@ function App() {
         <CartProvider>
         <>
         <BrowserRouter>
+            <AppShell>
             <Routes>
                 {/* === CLIENT ROUTES === */}
                 <Route path="/" element={
@@ -688,11 +689,23 @@ function App() {
                 }/>
                 <Route path="/403" element={<Forbidden403/>}/>
             </Routes>
+            </AppShell>
+            <ToastContainer/>
         </BrowserRouter>
-        <ChatBot />
-        <ToastContainer/>
         </>
         </CartProvider>
+    );
+}
+
+function AppShell({ children }) {
+    const location = useLocation();
+    const showChatBot = !location.pathname.startsWith('/admin') && location.pathname !== '/403';
+
+    return (
+        <>
+            {children}
+            {showChatBot ? <ChatBot /> : null}
+        </>
     );
 }
 
