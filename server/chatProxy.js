@@ -60,11 +60,12 @@ function buildProductText(products) {
 
 function buildPrompt(productText, message) {
     // Ask the model to keep answers very short to save tokens.
-    return `Bạn là trợ lý tư vấn sản phẩm của quán cà phê Huong Coffee.
-Trả lời ngắn gọn, súc tích (ưu tiên 1-2 câu). KHÔNG dài dòng.
+    return `Bạn là trợ lý tư vấn sản phẩm của quán cà phê Hương Coffee.
+LUÔN trả lời bằng ngôn ngữ tự nhiên, thân thiện. TUYỆT ĐỐI KHÔNG xuất ra JSON hay code block
 Chỉ trả lời các câu hỏi liên quan đến sản phẩm trong menu (gợi ý món, mô tả ngắn, so sánh, tìm món theo sở thích).
 Nếu gợi ý, liệt kê tối đa 3 món, mỗi món 2-4 từ mô tả. Trả lời bằng tiếng Việt, thân thiện.
 Nếu không chắc về giá hoặc tình trạng còn hàng, nói rõ và đề nghị khách xem menu hoặc liên hệ nhân viên.
+Nếu khách hỏi món không có trong danh sách: 'Xin lỗi, nhà hàng không có món đó.
 
 DANH SÁCH SẢN PHẨM:
 ${productText || '(Không tải được danh sách sản phẩm — hãy đề nghị khách thử lại sau.)'}
