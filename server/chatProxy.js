@@ -17,6 +17,22 @@ const PORT = process.env.PORT || 4000;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const BACKEND_URL = process.env.BACKEND_URL || 'http://localhost:8080';
 const GEMINI_MODEL = process.env.GEMINI_MODEL || 'gemini-2.5-flash';
+// In-memory conversation store: { conversationId -> [{role:'user'|'assistant', text}, ...] }
+const CONVERSATIONS = new Map();
+const MAX_HISTORY_ENTRIES = 10; // number of recent turns to include in context
+const MAX_HISTORY_CHARS = 800; // maximum characters for summarized history
+
+function summarizeHistory(history) {
+    // Create a short summary by keeping role labels and trimming each turn
+    const parts = history.map(h => {
+        const txt = (h.text || '').replace(/\s+/g, ' ').trim();
+        const short = txt.length > 120 ? txt.slice(0, 117).trim() + '...' : txt;
+        return `${h.role === 'user' ? 'User' : 'Assistant'}: ${short}`;
+    });
+    let summary = parts.join(' ; ');
+    if (summary.length > MAX_HISTORY_CHARS) summary = summary.slice(summary.length - MAX_HISTORY_CHARS);
+    return summary;
+}
 
 async function fetchProducts() {
     try {
@@ -89,11 +105,30 @@ function fallbackReply(message, products) {
 
 app.post('/api/chat', async (req, res) => {
     const { message } = req.body || {};
+    const conversationId = req.body.conversationId || req.headers['x-conversation-id'] || req.ip;
     if (!message || !message.trim()) return res.status(400).json({ error: 'Missing message' });
+
+    // load and update conversation history
+    const convKey = String(conversationId);
+    const history = CONVERSATIONS.get(convKey) || [];
+    history.push({ role: 'user', text: message.trim() });
+    // keep only recent entries
+    if (history.length > MAX_HISTORY_ENTRIES * 2) history.splice(0, history.length - MAX_HISTORY_ENTRIES * 2);
+    CONVERSATIONS.set(convKey, history);
 
     const products = await fetchProducts();
     const productText = buildProductText(products);
-    const prompt = buildPrompt(productText, message.trim());
+
+    // Build short conversational context from history (last N user+assistant turns)
+    const recent = history.slice(-MAX_HISTORY_ENTRIES * 2); // user+assistant pairs
+    let contextText = recent.map(h => `${h.role === 'user' ? 'User' : 'Assistant'}: ${h.text}`).join('\n');
+    // If history is long, use a summarized form to save tokens
+    if (history.length > MAX_HISTORY_ENTRIES * 2) {
+        const summary = summarizeHistory(history.slice(-MAX_HISTORY_ENTRIES * 4));
+        contextText = 'SUMMARY: ' + summary;
+    }
+
+    const prompt = `${contextText ? 'CONTEXT:\n' + contextText + '\n\n' : ''}${buildPrompt(productText, message.trim())}`;
 
     try {
         let reply = '';
@@ -101,6 +136,13 @@ app.post('/api/chat', async (req, res) => {
             reply = await callGemini(prompt);
         } else {
             reply = fallbackReply(message, products);
+        }
+        // store assistant reply into conversation history
+        if (reply) {
+            const hist = CONVERSATIONS.get(convKey) || [];
+            hist.push({ role: 'assistant', text: reply });
+            if (hist.length > MAX_HISTORY_ENTRIES * 2) hist.splice(0, hist.length - MAX_HISTORY_ENTRIES * 2);
+            CONVERSATIONS.set(convKey, hist);
         }
         reply = reply || 'Xin lỗi, tôi không trả lời được ngay bây giờ.';
         return res.json({ reply });
@@ -111,5 +153,13 @@ app.post('/api/chat', async (req, res) => {
 });
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
+
+// Clear conversation history for a given conversationId
+app.post('/api/chat/clear', (req, res) => {
+    const conversationId = req.body.conversationId || req.headers['x-conversation-id'] || req.ip;
+    const convKey = String(conversationId);
+    CONVERSATIONS.delete(convKey);
+    return res.json({ ok: true });
+});
 
 app.listen(PORT, () => console.log(`Chat proxy running on port ${PORT}`));
