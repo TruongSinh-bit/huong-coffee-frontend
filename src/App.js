@@ -55,6 +55,7 @@ import UserList from "./components/admin/users/UserList";
 
 import {hasRole, isLoggedIn} from "./components/admin/manager/HasRole";
 import Forbidden403 from "./components/admin/manager/403";
+import ChatBot from "./components/common/Chat/ChatBot";
 
 function App() {
     return (
@@ -688,6 +689,7 @@ function App() {
                 <Route path="/403" element={<Forbidden403/>}/>
             </Routes>
         </BrowserRouter>
+        <ChatBot />
         <ToastContainer/>
         </>
         </CartProvider>
